@@ -1,0 +1,6 @@
+node_modules/
+bundles/
+
+project
+.vscode
+build/
