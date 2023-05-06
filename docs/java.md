@@ -10,5 +10,10 @@ http {
     }
 }
 ```
+- 运行jar包,设置端口，设置环境
+```
+java -jar -Xmx1024M -Xms256M  /data/jar/tmall-0.0.1-SNAPSHOT.jar --server.port=8088 --spring.profiles.active=prod
+```
 
+- 远程调试
 

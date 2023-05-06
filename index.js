@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import { Text, AppRegistry } from "react-native";
+import { Text, AppRegistry, View } from "react-native";
 
 class RNMain extends Component {
   render() {
-    return <Text>Hello world</Text>;
+    var { pageName } = this.props;
+    let params = this.props.params;
+
+    return (
+      <View>
+        <Text>Hello world</Text>
+      </View>
+    );
   }
 }
 

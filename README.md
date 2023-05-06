@@ -30,3 +30,13 @@
 
  ## Nginx
 - [Nginx文档](./docs/nginx.md) 
+
+## VS code
+- 插件
+    - React Native Debugger
+        - 内部调试
+        - Attach to packager
+    - Project Manager
+        - Save Project - 保存项目
+    - MarkDown预览插件
+        - Markdown Preview Enhanced
