@@ -1,26 +1,27 @@
 ## React Native
-- 整体项目结构
-├── android
-├── ios     
-├── docs
-├── assets 
-├── bundles
-├── node_modules
-├── src
-│   ├── actions
-│   ├── components
-│   ├── pages
-│   ├── reducers
-│   ├── services
-│   ├── store
-│   └── pages
-│       ├── book
-│       └── home
-│
-├── .gitignore
-├── package.json
-├── README.md
-└── yarn.lock
+### 整体项目结构
+    .
+    ├── android
+    ├── ios     
+    ├── docs
+    ├── assets 
+    ├── bundles
+    ├── node_modules
+    ├── src
+    │   ├── actions
+    │   ├── components
+    │   ├── pages
+    │   ├── reducers
+    │   ├── services
+    │   ├── store
+    │   └── pages
+    │       ├── book
+    │       └── home
+    │
+    ├── .gitignore
+    ├── package.json
+    ├── README.md
+    └── yarn.lock
 
 - 结构说明
     - android
@@ -38,4 +39,11 @@
     - src
     react native源码
 
-- 
+- 项目打包
+```
+// Android
+react-native bundle --platform android --entry-file index.js --bundle-output ./bundles/android/index.bundle --assets-dest ./bundles/android --dev false
+
+// iOS
+react-native bundle  --platform ios --entry-file index.js --bundle-output ./bundles/ios/index.bundle --assets-dest ./bundles/ios --dev flase
+```
