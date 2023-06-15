@@ -341,4 +341,7 @@ File -> New -> New Module -> Android Library
     ```
     **解决：**
     重启as，关闭代理软件，修改gradle版本
+    
+- Android Studio断点无法调试，没有禁用断点按钮，只有暂停运行
+   Run -> Edit Configurations... -> Android App -> app -> General -> Launch Options -> Launch: 把 Nothing 改为 Default Activity
 
