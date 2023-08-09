@@ -345,3 +345,5 @@ File -> New -> New Module -> Android Library
 - Android Studio断点无法调试，没有禁用断点按钮，只有暂停运行
    Run -> Edit Configurations... -> Android App -> app -> General -> Launch Options -> Launch: 把 Nothing 改为 Default Activity
 
+### [通过jsbridge与js交互](https://github.com/Gerry1218/js2native)
+
