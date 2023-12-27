@@ -11,9 +11,14 @@
     |[FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)| TabLayout组件|
     |[Retrofit2](https://github.com/square/retrofit)|HTTP请求|
     |ViewPager2| AndroidX分页组件|
+    |[DKVideoPlayer](https://github.com/Doikki/DKVideoPlayer/)| 视频播放|
+    |[腾讯tbs](https://x5.tencent.com/)| 腾讯tbs浏览器|
+    |[AgentWeb](https://github.com/Justson/AgentWeb)| AgentWeb 是一个高度封装的 Android WebView ，简单易用 ， 带有进度条 、 支持文件上传 、 下载 、 简化 Javascript 通信 、 链式调用 、 加强 Web 安全的库 |
+    |[JsBridge](https://github.com/lzyzsd/JsBridge)| 原生和js交互库|
+    |[SuperTextView](https://github.com/chenBingX/SuperTextView)| 复杂的view属性设置圆角、边框、单独设置圆角、展示图片，包括网络图片等等 |
 
 - 新工程编译报错，如下
-```
+```shell
 Can't determine type for tag '<macro name="m3_comp_assist_chip_container_shape">?attr/shapeAppearanceCornerSmall</macro>'
 ```
 修改app/build.gradle的依赖版本
@@ -65,7 +70,7 @@ implementation 'com.google.android.material:material:1.6.0'
     ```
 
 - Sync project报错
-```
+```shell
 A problem occurred evaluating root project 'xxshop'.
 > Build was configured to prefer settings repositories over project repositories but repository 'maven' was added by build file 'build.gradle'
 ```
@@ -82,7 +87,7 @@ dependencyResolutionManagement {
 ```
 
 - 集成RN后，编译报错
-```
+```shell
 FAILURE: Build completed with 8 failures.
 
 1: Task failed with an exception.
@@ -113,7 +118,7 @@ allprojects {
 }
 ```
 - 运行项目报错
-```
+```shell
 java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wanris.xxshop/com.wanris.xxshop.MainActivity}: java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity
 ...
 ```
@@ -130,7 +135,7 @@ java.lang.RuntimeException: Unable to start activity ComponentInfo{com.wanris.xx
 ```
 
 - 运行调用rn页面
-```
+```shell
 E/ReactNativeJNI: logMarker CREATE_REACT_CONTEXT_END
 E/unknown:ReactNative: ReactInstanceManager.createReactContext: mJSIModulePackage null
 E/unknown:DisabledDevSupportManager: Caught exception
@@ -156,13 +161,13 @@ android:usesCleartextTraffic="true"
 ```
 
 - 真机运行项目报错
-```
+```shell
 Installation did not succeed.
 The application could not be installed: INSTALL_FAILED_TEST_ONLY
 ...
 ```
 项目根目录的gradle.properties里面新增
-```
+```shell
 # 真机运行报错fixed： "INSTALL_FAILED_TEST_ONLY"
 android.injected.testOnly=false
 ```
@@ -172,7 +177,7 @@ android.injected.testOnly=false
 debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 ```
 运行项目提示LeakCanary被禁用
-```
+```shell
 2023-05-06 14:24:07.140 21293-21318/com.wanris.xxshop D/LeakCanary: LeakCanary is currently disabled: Waiting for debugger to detach.
 ```
 
@@ -183,8 +188,8 @@ debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 </resources>
 ```
 **Note:只能直接Run 'app'运行项目，不要用Debug 'app'调试模式！！！**
-```
-// LeakCanary工具集成成功
+```shell
+# LeakCanary工具集成成功
 LeakCanary is running and ready to detect memory leaks.
 ```
 
@@ -193,7 +198,7 @@ By default, LeakCanary will look for the org.junit.Test class in your classpath 
 
 
 - library-resource中无法执行DimenUtil的main方法,错误如下
-```
+```shell
 FAILURE: Build failed with an exception.
 
 * Where:
@@ -261,7 +266,7 @@ File -> New -> New Module -> Android Library
     **注2：子模块多渠道配置同上。**
 
 - 点击`Run 'app'`，模拟器等待调试，控制台输出如下
-    ```
+    ```shell
     W/ActivityThread: Application com.wanris.xxshop is waiting for the debugger on port 8100...
     I/System.out: Sending WAIT chunk
     W/System: A resource failed to call close. 
@@ -347,3 +352,93 @@ File -> New -> New Module -> Android Library
 
 ### [通过jsbridge与js交互](https://github.com/Gerry1218/js2native)
 
+
+### Java反编译工具JD-GUI & JADX
+
+- 显示jar包源码,class文件，可以保存为java文件
+https://github.com/java-decompiler/jd-gui
+
+- 提示java版本不对，无法启动则替换，右键点击JD-GUI查看包内容，/Contents/MacOS/universalJavaApplicationStub.sh文件内容替换为以下：
+https://github.com/tofi86/universalJavaApplicationStub/blob/v3.0.6/src/universalJavaApplicationStub
+
+- Adnroid的Jar包反编译，通过JADX可以反编译Android app的Jar包源码：
+https://sourceforge.net/projects/jadx.mirror/
+  
+  
+### 修改aar包中的代码
+1. 在项目中找到对应的aar包，步骤如下
+   - 选中对应的库
+    <img src="./images/android/a8.png">
+   - Sources对应的版本号(2.0.0)的目录下有4个文件夹，都看下，其中有个文件夹下有aar文件
+   - <img src="./images/android/a9.png">
+  
+2. 新建目录`agentweb2`,解压aar到该目录
+```shell
+mkdir agentweb2
+unzip agentweb-2.0.0.aar -d agentweb2
+```
+
+3. 解压`agentweb2`下的`classes.jar`文件
+```shell
+unzip classes.jar -d classesDir
+```
+
+4. 用JD-GUI打开jar包，找到需要修改`AgentWebPermissions.class`的文件，选‘文件保存’为`AgentWebPermissions.java`文件
+   <img src="./images/android/a7.png">
+
+5. 修改`AgentWebPermissions.java`文件,编译为`AgentWebPermissions.class`文件
+```shell
+javac AgentWebPermissions.java
+```
+
+6. 替换classesDir下的`AgentWebPermissions.class`文件
+
+7. 重新打jar包
+```shell
+jar cvf classes.jar -C classesDir/ .
+```
+
+8. 重新打aar包
+```shell
+jar cvf agentweb.aar -C agentweb2/ .
+```
+
+### 权限android.permission.WRITE_EXTERNAL_STORAGE申请在Android10及以上版本一直失败
+
+<img src="./images/android/a10.png">
+
+A. 去掉`maxSdkVersion`
+
+### [Java&Kotlin混编配置参考](https://cloud.tencent.com/developer/article/1369455?from=15425)
+1. 工程根目录build.gradle 的buildscript节点配置kotlin版本号和插件
+```groovy
+buildscript {
+    // 添加
+    ext.kotlin_version = '1.5.31'
+    dependencies {
+        // 添加这一行依赖
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+    ......
+}
+```
+2. 在项目module的 build.gradle 的顶部添加以下代码：
+```groovy
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+```
+3. 在项目module的build.gradle的dependencies 节点里添加以下代码:
+```groovy
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+```
+
+### [导出公钥&指纹](https://ask.dcloud.net.cn/article/40734)
+下载`jadx-gui`打开apk包，底部可以查看，详情见链接
+```shell
+# 导出公钥，xxx.jks 为证书文件
+keytool -list -rfc --keystore xxx.jks | openssl x509 -inform pem -pubkey
+# 获取指纹， china为别名
+keytool -list -keystore xxx.jks -alias china -v
+```

@@ -140,7 +140,7 @@ end
 
 <details>
 <summary> xcrun: error: SDK "iphoneos" cannot be located </summary>
-<pre><code>
+
 ```
 Installing glog (0.3.5)
 [!] /bin/bash -c 
@@ -237,9 +237,8 @@ configure: error: C compiler cannot create executables
 See `config.log' for more details
 ```
 
-</code>
-</pre>
 </details>
+
 
 A: 执行下面脚本
 ```
@@ -261,6 +260,33 @@ post_install do |installer|
 end
 
 ```
+
+### [Build Phases的 `Link Binary With Libraries`通过Podfile新增库](https://stackoverflow.com/questions/61378664/cocoapods-post-install-how-to-add-target-membership-in-pods-project)
+
+```ruby
+post_install do |installer|
+  puts("Attempting to add Nami.xcframework reference to react-native-nami-sdk project.")
+  installer.pods_project.targets.each do |target|
+    if target.name  == "react-native-nami-sdk"
+      puts("Found react-native-nami-sdk target.")
+      all_filerefs = installer.pods_project.files
+      all_filerefs.each do |fileref|
+         if fileref.path.end_with? "Nami.xcframework"
+          puts("Found Nami.xcframework fileref.")
+          build_phase = target.frameworks_build_phase
+          puts("Determining if react-native-nami-sdk build phase needs correction.")
+          unless build_phase.files_references.include?(fileref)
+            puts("Adding Nami.xcframework to react-native-nami-sdk target")
+            build_phase.add_file_reference(fileref)
+          end
+         end
+      end
+    end
+  end
+end
+```
+
+
 
 
 - iOS共享文件夹([UTIs类型说明](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html#//apple_ref/doc/uid/TP40009259-SW1))
@@ -308,6 +334,9 @@ post_install do |installer|
 
 end
 ```
+
+
+
 - [XCode14打包注意](https://www.jianshu.com/p/81db8f0b2c96)
   - ⚠️ 切记：在Build Phases -> Link Binary With Librarires 里面添加 libswiftCoreGraphics.tbd。
 否则xcode14打出来的包，在iOS12.2以下的系统找不到 libswiftCoreGraphics.dylib而发生崩溃。
