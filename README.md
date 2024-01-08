@@ -10,9 +10,9 @@ xxstore移动商城 - iOS/Android原生应用集成React Native混合开发。
 
 ## gif演示
 ### 电商模块
-![image](./docs/gif/xxstore1.gif)
+![image](./docs/gif/xxstore3.gif)
 ### React Native页面、Kotlin页面、js交互展示
-![image](./docs/gif/xxstore2.gif)
+![image](./docs/gif/xxstore4.gif)
 
 ## React Native
 - [React native项目](https://github.com/Gerry1218/xxstore.git)
