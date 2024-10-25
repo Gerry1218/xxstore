@@ -167,6 +167,9 @@ emulator @Pixel_XL_API_30
 
 # 启动指定模拟器
 yarn android @Pixel_XL_API_30
+
+# 启动android
+react-native run-android
 ```
 
 ### [加载差分包报错](https://github.com/smallnew/react-native-multibundler)
