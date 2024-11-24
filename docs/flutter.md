@@ -104,7 +104,7 @@ displayType:SmartToastType.last
 ### 开源项目
 |  项目   | 介绍  | 演示 |
 |  ----  | ----  | ----  |
-| [loading_indicator](https://github.com/TinoGuo/loading_indicator)  | - | <img src="https://github.com/TinoGuo/loading_indicator/blob/master/gif/demo_2021_07_18_02.gif?raw=true" width=320 height=321/> |
+| [loading_indicator](https://github.com/TinoGuo/loading_indicator)  | - | <img src="https://raw.githubusercontent.com/TinoGuo/loading_indicator/master/gif/demo_2021_07_18_02.gif" width=320 height=321/> |
 | [flutter_easyloading](https://github.com/nslogx/flutter_easyloading)  | - | <img src="https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif01.gif" width=200 height=429/> <img src="https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif02.gif" width=200 height=429/> <img src="https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif03.gif" width=200 height=429/> <img src="https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif04.gif" width=200 height=429/> |
 | 单元格  | 单元格 | 单元格 |
 
