@@ -78,9 +78,34 @@ flutter:
             android:exported="false" />
    ```
 
+3. Dio请求报错
+```shell
+dio Error: FormatException: Unexpected character (at offset 0)Error: FormatException: Unexpected character (at offset 0)
+```
+A: 接口返回数据不是json格式，但是通过postman看到的都是正常的，可以在post时的options参数里设置为Options(responseType: ResponseType.plain)查看返回结果
+
+4. SmartDialog三方库问题, 不要设置SmartToastType.last, 多个请求报错会导致toast无法消失
+更换三方库： flutter_easyloading
+```dart
+displayType:SmartToastType.last
+```
+
+5. `RotatedBox`用于旋转组件
+6. 嵌套滑动页面组件`extended_tabs`
+7. `animated_text_kit`打印机效果，水波等动效
+8. `yield`异步生成器
+   
+
+   
+9.  
 
 
-### 项目
 
+### 开源项目
+|  项目   | 介绍  | 演示 |
+|  ----  | ----  | ----  |
+| [loading_indicator](https://github.com/TinoGuo/loading_indicator)  | - | ![](https://github.com/TinoGuo/loading_indicator/blob/master/gif/demo_2021_07_18_02.gif?raw=true) |
+| [flutter_easyloading](https://github.com/nslogx/flutter_easyloading)  | - | ![](https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif02.gif)![](https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif01.gif)![](https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif03.gif)![](https://raw.githubusercontent.com/nslogx/flutter_easyloading/master/images/gif04.gif =100x) |
+| 单元格  | 单元格 | 单元格 |
 
 ### 参考资源
