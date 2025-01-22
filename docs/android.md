@@ -434,6 +434,24 @@ dependencies {
 }
 ```
 
+4. android15模拟器安装app报错
+```shell
+Failure [INSTALL_FAILED_INVALID_APK: INSTALL_FAILED_INVALID_APK: Failed to extract native libraries, res=-2]
+```
+
+A: 在`AndroidManifest.xml`文件的`application`标签下添加`android:extractNativeLibs="true"`
+```xml
+<application
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:label="声遇"
+        tools:replace="android:label"
+        android:extractNativeLibs="true">
+
+        ....
+</application>
+```
+
 ### [导出公钥&指纹](https://ask.dcloud.net.cn/article/40734)
 下载`jadx-gui`打开apk包，底部可以查看，详情见链接
 ```shell
